@@ -483,8 +483,8 @@ uint64_t HammerAllReachablePages(void* memory_mapping, uint64_t memory_mapping_s
     uint64_t presumed_row_index = physical_address / ROW_SIZE;
     //printf("[!] put va %lx pa %lx into row %ld\n", (uint64_t)virtual_address,
     //    physical_address, presumed_row_index);
-    if (presumed_row_index > pages_per_row.size()) {
-      pages_per_row.resize(presumed_row_index);
+    if (presumed_row_index >= pages_per_row.size()) {
+      pages_per_row.resize(presumed_row_index + 1);
     }
     pages_per_row[presumed_row_index].push_back(virtual_address);
     //printf("[!] done\n");
